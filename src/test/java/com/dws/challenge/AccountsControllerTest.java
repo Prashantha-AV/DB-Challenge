@@ -102,4 +102,44 @@ class AccountsControllerTest {
       .andExpect(
         content().string("{\"accountId\":\"" + uniqueAccountId + "\",\"balance\":123.45}"));
   }
+
+    @Test
+    void executeTransfer_Success() throws Exception {
+        Account source = new Account("ACC-1", new BigDecimal("500.00"));
+        Account target = new Account("ACC-2", new BigDecimal("200.00"));
+        accountsService.createAccount(source);
+        accountsService.createAccount(target);
+
+        this.mockMvc.perform(post("/v1/accounts/transfer")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"accountFromId\":\"ACC-1\",\"accountToId\":\"ACC-2\",\"amount\":150.00}"))
+                .andExpect(status().isOk());
+
+        assertThat(accountsService.getAccount("ACC-1").getBalance()).isEqualByComparingTo("350.00");
+        assertThat(accountsService.getAccount("ACC-2").getBalance()).isEqualByComparingTo("350.00");
+    }
+
+    @Test
+    void executeTransfer_InsufficientFunds() throws Exception {
+        Account source = new Account("ACC-1", new BigDecimal("100.00"));
+        Account target = new Account("ACC-2", new BigDecimal("200.00"));
+        accountsService.createAccount(source);
+        accountsService.createAccount(target);
+
+        this.mockMvc.perform(post("/v1/accounts/transfer")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"accountFromId\":\"ACC-1\",\"accountToId\":\"ACC-2\",\"amount\":250.00}"))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    void executeTransfer_AccountNotFound() throws Exception {
+        Account target = new Account("ACC-2", new BigDecimal("200.00"));
+        accountsService.createAccount(target);
+
+        this.mockMvc.perform(post("/v1/accounts/transfer")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"accountFromId\":\"ACC-UNKNOWN\",\"accountToId\":\"ACC-2\",\"amount\":50.00}"))
+                .andExpect(status().isNotFound());
+    }
 }
