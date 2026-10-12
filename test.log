@@ -1,0 +1,853 @@
+3:40:26 pm: Executing ':com.dws.challenge.ChallengeApplication.main()'…
+
+40:28.024   [           main] com.dws.challenge.ChallengeApplication   : Starting ChallengeApplication using Java 21.0.8 with PID 21424 (/Users/prashanthaaramanekoppa/Documents/DB_USE_CASE/challenge/build/classes/java/main started by prashanthaaramanekoppa in /Users/prashanthaaramanekoppa/Documents/DB_USE_CASE/challenge)
+40:28.025   [           main] com.dws.challenge.ChallengeApplication   : No active profile set, falling back to 1 default profile: "default"
+40:28.470   [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+40:28.479   [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+40:28.479   [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.24]
+40:28.501   [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 449 ms
+40:28.696   [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+40:28.699   [           main] com.dws.challenge.ChallengeApplication   : Started ChallengeApplication in 0.863 seconds (process running for 1.042)
+40:58.290   [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+40:58.291   [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+40:58.298   [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+40:59.515   [nio-8080-exec-9] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 173 ms
+41:27.739   [nio-8080-exec-6] c.dws.challenge.web.AccountsController   : Fetching details for account: 123
+41:52.905   [nio-8080-exec-7] c.dws.challenge.web.AccountsController   : Registering new account: Id-123
+42:02.278   [nio-8080-exec-3] c.dws.challenge.web.AccountsController   : Registering new account: Id-124
+42:23.037   [nio-8080-exec-8] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=Id-123, accountToId=Id-124, amount=500)
+42:23.038   [nio-8080-exec-8] c.dws.challenge.service.AccountsService  : Completed transfer of 500 from account Id-123 to account Id-124
+42:23.038   [nio-8080-exec-8] c.d.c.service.EmailNotificationService   : Sending notification to owner of Id-123: Transfer debited: 500 sent to account Id-124.
+42:23.038   [nio-8080-exec-8] c.d.c.service.EmailNotificationService   : Sending notification to owner of Id-124: Transfer credited: 500 received from account Id-123.
+43:34.974   [nio-8080-exec-2] c.dws.challenge.web.AccountsController   : Fetching details for account: Id-123
+43:39.992   [nio-8080-exec-4] c.dws.challenge.web.AccountsController   : Fetching details for account: Id-124
+43:56.596   [nio-8080-exec-1] c.dws.challenge.web.AccountsController   : Fetching details for account: Id-125
+44:25.264   [nio-8080-exec-5] c.dws.challenge.web.AccountsController   : Registering new account: Id-125
+44:32.994   [nio-8080-exec-6] c.dws.challenge.web.AccountsController   : Registering new account: Id-125
+44:44.282   [nio-8080-exec-7] c.dws.challenge.web.AccountsController   : Registering new account: Id-126
+44:55.162   [nio-8080-exec-3] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=Id-121, accountToId=Id-124, amount=500)
+45:07.113   [nio-8080-exec-8] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=Id-124, accountToId=Id-120, amount=500)
+45:15.645   [nio-8080-exec-9] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=Id-124, accountToId=Id-125, amount=500)
+45:15.647   [nio-8080-exec-9] c.dws.challenge.service.AccountsService  : Completed transfer of 500 from account Id-124 to account Id-125
+45:15.647   [nio-8080-exec-9] c.d.c.service.EmailNotificationService   : Sending notification to owner of Id-124: Transfer debited: 500 sent to account Id-125.
+45:15.647   [nio-8080-exec-9] c.d.c.service.EmailNotificationService   : Sending notification to owner of Id-125: Transfer credited: 500 received from account Id-124.
+45:32.544   [nio-8080-exec-2] c.dws.challenge.web.AccountsController   : Fetching details for account: Id-125
+46:17.790   [io-8080-exec-10] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=Id-124, accountToId=Id-125, amount=2)
+46:17.791   [io-8080-exec-10] c.dws.challenge.service.AccountsService  : Completed transfer of 2 from account Id-124 to account Id-125
+46:17.791   [io-8080-exec-10] c.d.c.service.EmailNotificationService   : Sending notification to owner of Id-124: Transfer debited: 2 sent to account Id-125.
+46:17.791   [io-8080-exec-10] c.d.c.service.EmailNotificationService   : Sending notification to owner of Id-125: Transfer credited: 2 received from account Id-124.
+57:35.330   [nio-8080-exec-6] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 555 ms
+59:43.036 DEBUG 21424 --- [challenge] [nio-8080-exec-7] o.springdoc.api.AbstractOpenApiResource  : Fetching openApi document from cache
+
+========================DeadLock Testing===============================
+
+02.827   [io-8080-exec-10] c.dws.challenge.web.AccountsController   : Registering new account: ACC-A
+02.833   [nio-8080-exec-2] c.dws.challenge.web.AccountsController   : Registering new account: ACC-B
+02.840   [nio-8080-exec-7] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.840   [nio-8080-exec-6] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.840   [nio-8080-exec-9] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.841   [nio-8080-exec-7] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.840   [nio-8080-exec-8] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.842   [nio-8080-exec-7] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.843   [nio-8080-exec-7] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.843   [nio-8080-exec-6] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.843   [nio-8080-exec-6] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.844   [nio-8080-exec-6] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.843   [nio-8080-exec-9] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.846   [nio-8080-exec-8] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.846   [nio-8080-exec-8] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.846   [nio-8080-exec-8] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.845   [nio-8080-exec-9] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.847   [nio-8080-exec-9] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.849   [nio-8080-exec-3] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.849   [nio-8080-exec-3] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.849   [nio-8080-exec-3] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.851   [nio-8080-exec-3] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.852   [nio-8080-exec-5] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.852   [nio-8080-exec-5] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.852   [nio-8080-exec-5] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.852   [nio-8080-exec-5] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.854   [nio-8080-exec-4] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.854   [nio-8080-exec-2] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.854   [nio-8080-exec-4] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.854   [nio-8080-exec-4] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.855   [nio-8080-exec-2] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.855   [nio-8080-exec-2] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.855   [nio-8080-exec-2] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.855   [io-8080-exec-10] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.855   [nio-8080-exec-6] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.855   [io-8080-exec-10] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.855   [nio-8080-exec-6] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.856   [nio-8080-exec-4] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.855   [nio-8080-exec-6] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.855   [io-8080-exec-10] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.855   [nio-8080-exec-7] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.856   [nio-8080-exec-6] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.856   [io-8080-exec-10] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.856   [nio-8080-exec-7] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.856   [nio-8080-exec-7] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.856   [nio-8080-exec-7] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.858   [nio-8080-exec-1] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.859   [nio-8080-exec-1] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.860   [nio-8080-exec-1] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.860   [nio-8080-exec-1] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.861   [nio-8080-exec-5] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.861   [nio-8080-exec-5] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.861   [nio-8080-exec-5] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.861   [nio-8080-exec-5] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.862   [nio-8080-exec-3] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.862   [nio-8080-exec-3] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.862   [nio-8080-exec-3] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.862   [nio-8080-exec-3] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.862   [nio-8080-exec-8] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.863   [nio-8080-exec-9] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.862   [nio-8080-exec-8] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.863   [nio-8080-exec-4] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.863   [nio-8080-exec-2] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.863   [nio-8080-exec-9] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.863   [nio-8080-exec-8] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.864   [nio-8080-exec-4] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.864   [nio-8080-exec-9] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.864   [nio-8080-exec-8] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.864   [nio-8080-exec-2] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.864   [nio-8080-exec-2] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.864   [nio-8080-exec-2] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.864   [nio-8080-exec-4] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.864   [nio-8080-exec-9] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.865   [nio-8080-exec-4] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.865   [io-8080-exec-10] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.865   [nio-8080-exec-6] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.865   [io-8080-exec-10] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.865   [nio-8080-exec-6] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.865   [nio-8080-exec-6] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.865   [io-8080-exec-10] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.867   [io-8080-exec-10] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.865   [nio-8080-exec-6] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.869   [nio-8080-exec-2] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.869   [nio-8080-exec-2] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.869   [nio-8080-exec-2] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.869   [nio-8080-exec-2] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.869   [nio-8080-exec-9] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.869   [nio-8080-exec-1] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.869   [nio-8080-exec-1] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.869   [nio-8080-exec-5] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.869   [nio-8080-exec-1] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.870   [nio-8080-exec-1] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.870   [nio-8080-exec-8] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.870   [nio-8080-exec-7] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.869   [nio-8080-exec-9] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.871   [nio-8080-exec-9] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.871   [nio-8080-exec-9] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.871   [nio-8080-exec-5] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.871   [nio-8080-exec-3] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.873   [nio-8080-exec-8] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.872   [nio-8080-exec-5] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.873   [nio-8080-exec-5] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.873   [nio-8080-exec-4] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.873   [nio-8080-exec-7] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.874   [nio-8080-exec-8] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.874   [nio-8080-exec-7] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.874   [nio-8080-exec-3] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.874   [nio-8080-exec-3] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.874   [nio-8080-exec-7] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.874   [nio-8080-exec-4] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.875   [nio-8080-exec-4] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.875   [nio-8080-exec-4] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.876   [nio-8080-exec-6] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.874   [nio-8080-exec-3] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.876   [nio-8080-exec-6] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.876   [nio-8080-exec-6] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.876   [nio-8080-exec-6] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.874   [nio-8080-exec-8] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.877   [nio-8080-exec-7] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.877   [nio-8080-exec-7] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.877   [nio-8080-exec-7] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.878   [nio-8080-exec-7] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.879   [nio-8080-exec-1] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.879   [nio-8080-exec-1] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.879   [nio-8080-exec-3] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.879   [nio-8080-exec-3] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.879   [nio-8080-exec-3] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.879   [nio-8080-exec-3] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.880   [nio-8080-exec-8] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.880   [nio-8080-exec-8] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.880   [nio-8080-exec-8] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.880   [nio-8080-exec-2] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.879   [nio-8080-exec-1] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.881   [nio-8080-exec-2] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.881   [nio-8080-exec-1] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.881   [nio-8080-exec-2] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.881   [io-8080-exec-10] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.881   [io-8080-exec-10] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.881   [io-8080-exec-10] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.881   [io-8080-exec-10] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.880   [nio-8080-exec-8] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.881   [nio-8080-exec-4] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.881   [nio-8080-exec-4] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.881   [nio-8080-exec-9] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.882   [nio-8080-exec-4] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.882   [nio-8080-exec-9] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.881   [nio-8080-exec-2] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.883   [nio-8080-exec-4] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.882   [nio-8080-exec-9] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.883   [nio-8080-exec-9] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.884   [nio-8080-exec-5] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.884   [nio-8080-exec-5] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.884   [nio-8080-exec-5] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.883   [nio-8080-exec-6] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.884   [nio-8080-exec-5] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.884   [nio-8080-exec-6] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.884   [nio-8080-exec-6] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.884   [nio-8080-exec-6] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.885   [nio-8080-exec-7] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.885   [nio-8080-exec-7] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.885   [nio-8080-exec-8] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.885   [nio-8080-exec-1] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.885   [nio-8080-exec-8] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.885   [nio-8080-exec-8] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.885   [nio-8080-exec-8] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.885   [nio-8080-exec-1] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.885   [nio-8080-exec-1] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.885   [nio-8080-exec-1] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.885   [nio-8080-exec-7] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.886   [nio-8080-exec-7] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.885   [nio-8080-exec-3] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.886   [nio-8080-exec-3] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.886   [nio-8080-exec-3] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.886   [nio-8080-exec-3] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.888   [nio-8080-exec-5] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.889   [nio-8080-exec-5] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.889   [nio-8080-exec-5] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.889   [nio-8080-exec-5] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.888   [nio-8080-exec-4] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.889   [nio-8080-exec-4] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.888   [nio-8080-exec-7] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.889   [nio-8080-exec-7] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.889   [nio-8080-exec-7] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.889   [nio-8080-exec-4] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.889   [nio-8080-exec-7] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.890   [nio-8080-exec-4] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.890   [nio-8080-exec-9] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.890   [nio-8080-exec-1] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.890   [nio-8080-exec-9] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.890   [nio-8080-exec-1] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.890   [nio-8080-exec-9] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.890   [nio-8080-exec-9] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.890   [io-8080-exec-10] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.891   [io-8080-exec-10] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.891   [io-8080-exec-10] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.891   [io-8080-exec-10] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.890   [nio-8080-exec-1] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.891   [nio-8080-exec-1] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.891   [nio-8080-exec-6] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.892   [nio-8080-exec-6] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.892   [nio-8080-exec-6] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.892   [nio-8080-exec-6] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.892   [nio-8080-exec-2] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.893   [nio-8080-exec-2] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.893   [nio-8080-exec-3] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.893   [nio-8080-exec-2] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.893   [nio-8080-exec-2] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.893   [nio-8080-exec-3] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.893   [nio-8080-exec-3] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.893   [nio-8080-exec-3] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.894   [nio-8080-exec-8] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.894   [nio-8080-exec-8] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.894   [nio-8080-exec-5] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.894   [nio-8080-exec-5] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.895   [nio-8080-exec-5] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.895   [nio-8080-exec-9] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.895   [nio-8080-exec-5] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.895   [nio-8080-exec-9] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.895   [nio-8080-exec-9] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.895   [nio-8080-exec-9] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.894   [nio-8080-exec-8] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.895   [nio-8080-exec-8] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.894   [nio-8080-exec-4] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.895   [nio-8080-exec-4] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.895   [nio-8080-exec-4] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.896   [nio-8080-exec-4] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.896   [io-8080-exec-10] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.896   [io-8080-exec-10] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.896   [io-8080-exec-10] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.896   [nio-8080-exec-1] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.896   [nio-8080-exec-1] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.896   [nio-8080-exec-1] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.896   [io-8080-exec-10] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.898   [nio-8080-exec-3] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.897   [nio-8080-exec-1] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.898   [nio-8080-exec-3] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.900   [nio-8080-exec-6] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.898   [nio-8080-exec-3] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.900   [nio-8080-exec-3] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.900   [nio-8080-exec-6] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.900   [nio-8080-exec-6] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.900   [nio-8080-exec-6] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.902   [nio-8080-exec-2] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.902   [nio-8080-exec-2] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.902   [nio-8080-exec-2] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.902   [nio-8080-exec-2] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.904   [nio-8080-exec-9] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.904   [nio-8080-exec-9] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.904   [nio-8080-exec-9] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.904   [nio-8080-exec-5] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.904   [nio-8080-exec-5] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.904   [nio-8080-exec-9] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.904   [nio-8080-exec-5] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.904   [nio-8080-exec-8] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.905   [nio-8080-exec-8] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.905   [nio-8080-exec-8] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.905   [nio-8080-exec-4] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.905   [nio-8080-exec-8] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.905   [nio-8080-exec-5] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.905   [io-8080-exec-10] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.905   [nio-8080-exec-4] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.905   [nio-8080-exec-4] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.905   [nio-8080-exec-4] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.906   [io-8080-exec-10] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.907   [io-8080-exec-10] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.907   [io-8080-exec-10] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.907   [nio-8080-exec-5] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.907   [nio-8080-exec-5] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.907   [nio-8080-exec-5] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.907   [nio-8080-exec-5] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.908   [nio-8080-exec-2] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.908   [nio-8080-exec-2] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.908   [nio-8080-exec-2] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.908   [nio-8080-exec-2] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.909   [nio-8080-exec-9] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.909   [nio-8080-exec-9] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.909   [nio-8080-exec-9] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.909   [nio-8080-exec-9] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.910   [io-8080-exec-10] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.910   [io-8080-exec-10] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.910   [nio-8080-exec-3] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.910   [nio-8080-exec-3] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.910   [nio-8080-exec-3] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.910   [nio-8080-exec-3] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.910   [io-8080-exec-10] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.911   [io-8080-exec-10] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.912   [nio-8080-exec-8] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.912   [nio-8080-exec-8] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.913   [nio-8080-exec-8] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.913   [nio-8080-exec-8] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.913   [nio-8080-exec-6] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.913   [nio-8080-exec-6] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.913   [nio-8080-exec-6] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.913   [nio-8080-exec-6] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.913   [nio-8080-exec-2] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.913   [nio-8080-exec-2] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.914   [nio-8080-exec-2] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.914   [nio-8080-exec-2] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.913   [nio-8080-exec-4] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.915   [nio-8080-exec-5] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.915   [io-8080-exec-10] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.915   [nio-8080-exec-7] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.914   [nio-8080-exec-4] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.916   [nio-8080-exec-5] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.916   [nio-8080-exec-4] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.916   [nio-8080-exec-4] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.916   [nio-8080-exec-5] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.916   [nio-8080-exec-5] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.916   [io-8080-exec-10] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.916   [io-8080-exec-10] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.916   [io-8080-exec-10] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.916   [nio-8080-exec-7] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.916   [nio-8080-exec-9] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.917   [nio-8080-exec-9] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.916   [nio-8080-exec-7] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.917   [nio-8080-exec-9] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.917   [nio-8080-exec-9] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.917   [nio-8080-exec-8] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.917   [nio-8080-exec-8] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.917   [nio-8080-exec-8] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.917   [nio-8080-exec-7] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.917   [nio-8080-exec-8] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.919   [nio-8080-exec-2] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.919   [io-8080-exec-10] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.919   [nio-8080-exec-2] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.919   [nio-8080-exec-2] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.919   [nio-8080-exec-2] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.919   [nio-8080-exec-6] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.919   [nio-8080-exec-3] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.919   [io-8080-exec-10] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.919   [io-8080-exec-10] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.919   [io-8080-exec-10] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.919   [nio-8080-exec-6] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.919   [nio-8080-exec-6] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.919   [nio-8080-exec-3] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.920   [nio-8080-exec-6] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.920   [nio-8080-exec-3] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.920   [nio-8080-exec-3] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.921   [io-8080-exec-10] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.921   [io-8080-exec-10] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.921   [io-8080-exec-10] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.921   [io-8080-exec-10] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.921   [nio-8080-exec-4] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.921   [nio-8080-exec-4] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.921   [nio-8080-exec-5] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.921   [nio-8080-exec-4] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.921   [nio-8080-exec-4] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.921   [nio-8080-exec-5] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.921   [nio-8080-exec-5] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.921   [nio-8080-exec-5] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.921   [nio-8080-exec-1] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.921   [nio-8080-exec-1] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.922   [nio-8080-exec-1] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.922   [nio-8080-exec-1] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.922   [nio-8080-exec-8] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.922   [nio-8080-exec-8] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.922   [nio-8080-exec-8] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.925   [nio-8080-exec-8] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.926   [nio-8080-exec-7] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.926   [nio-8080-exec-7] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.926   [nio-8080-exec-7] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.926   [nio-8080-exec-7] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.926   [nio-8080-exec-3] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.927   [nio-8080-exec-8] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.927   [nio-8080-exec-6] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.927   [nio-8080-exec-3] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.927   [nio-8080-exec-3] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.928   [nio-8080-exec-3] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.928   [nio-8080-exec-8] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.928   [nio-8080-exec-8] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.928   [nio-8080-exec-8] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.928   [nio-8080-exec-6] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.928   [nio-8080-exec-6] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.928   [nio-8080-exec-6] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.929   [nio-8080-exec-9] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.929   [nio-8080-exec-9] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.929   [nio-8080-exec-9] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.930   [nio-8080-exec-9] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.930   [io-8080-exec-10] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.930   [io-8080-exec-10] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.930   [io-8080-exec-10] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.930   [io-8080-exec-10] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.931   [nio-8080-exec-6] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.931   [nio-8080-exec-6] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.931   [nio-8080-exec-6] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.931   [nio-8080-exec-6] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.931   [nio-8080-exec-5] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.931   [nio-8080-exec-5] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.932   [nio-8080-exec-1] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.932   [nio-8080-exec-1] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.932   [nio-8080-exec-1] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.932   [nio-8080-exec-1] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.932   [nio-8080-exec-7] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+02.932   [nio-8080-exec-7] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+02.932   [nio-8080-exec-7] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+02.931   [nio-8080-exec-5] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.933   [nio-8080-exec-5] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.933   [nio-8080-exec-2] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+02.933   [nio-8080-exec-2] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+02.933   [nio-8080-exec-2] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+02.932   [nio-8080-exec-7] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+02.933   [nio-8080-exec-2] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+02.938   [nio-8080-exec-3] c.dws.challenge.web.AccountsController   : Fetching details for account: ACC-A
+02.947   [nio-8080-exec-4] c.dws.challenge.web.AccountsController   : Fetching details for account: ACC-B
+39.650 DEBUG 21424 --- [challenge] [nio-8080-exec-4] o.springdoc.api.AbstractOpenApiResource  : Fetching openApi document from cache
+47.717   [nio-8080-exec-8] c.dws.challenge.web.AccountsController   : Registering new account: ACC-A
+47.727   [io-8080-exec-10] c.dws.challenge.web.AccountsController   : Registering new account: ACC-B
+47.734   [nio-8080-exec-6] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.734   [nio-8080-exec-1] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.734   [nio-8080-exec-6] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.735   [nio-8080-exec-5] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.735   [nio-8080-exec-6] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.735   [nio-8080-exec-6] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.736   [nio-8080-exec-7] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.736   [nio-8080-exec-1] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.736   [nio-8080-exec-2] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.737   [nio-8080-exec-5] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.737   [nio-8080-exec-7] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.737   [nio-8080-exec-9] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.737   [nio-8080-exec-5] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.737   [nio-8080-exec-5] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.737   [nio-8080-exec-2] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.737   [nio-8080-exec-7] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.737   [nio-8080-exec-2] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.737   [nio-8080-exec-7] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.738   [nio-8080-exec-2] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.738   [nio-8080-exec-9] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.738   [nio-8080-exec-9] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.738   [nio-8080-exec-9] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.739   [nio-8080-exec-1] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.739   [nio-8080-exec-1] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.749   [nio-8080-exec-6] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.749   [nio-8080-exec-6] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.749   [nio-8080-exec-6] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.749   [nio-8080-exec-6] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.749   [nio-8080-exec-3] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.749   [nio-8080-exec-3] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.749   [nio-8080-exec-3] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.750   [io-8080-exec-10] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.750   [io-8080-exec-10] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.751   [io-8080-exec-10] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.751   [io-8080-exec-10] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.752   [nio-8080-exec-5] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.752   [nio-8080-exec-5] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.749   [nio-8080-exec-3] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.752   [nio-8080-exec-5] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.750   [nio-8080-exec-1] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.752   [nio-8080-exec-1] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.752   [nio-8080-exec-1] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.752   [nio-8080-exec-1] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.753   [nio-8080-exec-8] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.753   [nio-8080-exec-8] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.753   [nio-8080-exec-5] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.753   [nio-8080-exec-8] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.755   [nio-8080-exec-8] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.759   [nio-8080-exec-7] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.759   [nio-8080-exec-7] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.759   [nio-8080-exec-7] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.759   [nio-8080-exec-7] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.759   [nio-8080-exec-9] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.759   [nio-8080-exec-9] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.760   [nio-8080-exec-9] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.759   [nio-8080-exec-2] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.760   [nio-8080-exec-2] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.760   [nio-8080-exec-9] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.760   [nio-8080-exec-2] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.761   [nio-8080-exec-2] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.761   [nio-8080-exec-4] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.761   [nio-8080-exec-4] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.761   [nio-8080-exec-4] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.761   [nio-8080-exec-4] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.762   [nio-8080-exec-6] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.762   [nio-8080-exec-6] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.762   [nio-8080-exec-6] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.762   [nio-8080-exec-6] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.762   [nio-8080-exec-7] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.762   [nio-8080-exec-7] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.762   [nio-8080-exec-7] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.762   [nio-8080-exec-7] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.762   [nio-8080-exec-2] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.763   [nio-8080-exec-2] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.763   [nio-8080-exec-2] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.763   [nio-8080-exec-2] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.765   [nio-8080-exec-5] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.765   [nio-8080-exec-5] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.765   [nio-8080-exec-5] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.765   [nio-8080-exec-5] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.766   [nio-8080-exec-3] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.766   [nio-8080-exec-1] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.766   [nio-8080-exec-3] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.766   [nio-8080-exec-3] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.766   [nio-8080-exec-3] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.766   [nio-8080-exec-1] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.766   [nio-8080-exec-1] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.766   [nio-8080-exec-1] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.767   [nio-8080-exec-8] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.767   [nio-8080-exec-4] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.767   [nio-8080-exec-8] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.767   [nio-8080-exec-4] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.767   [nio-8080-exec-4] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.767   [nio-8080-exec-8] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.767   [nio-8080-exec-4] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.767   [nio-8080-exec-8] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.768   [nio-8080-exec-9] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.768   [nio-8080-exec-9] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.768   [nio-8080-exec-9] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.768   [nio-8080-exec-9] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.769   [io-8080-exec-10] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.769   [io-8080-exec-10] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.769   [io-8080-exec-10] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.769   [io-8080-exec-10] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.769   [nio-8080-exec-8] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.769   [nio-8080-exec-8] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.769   [nio-8080-exec-8] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.769   [nio-8080-exec-6] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.769   [nio-8080-exec-6] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.769   [nio-8080-exec-6] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.769   [nio-8080-exec-6] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.769   [nio-8080-exec-8] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.770   [nio-8080-exec-2] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.770   [nio-8080-exec-2] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.770   [nio-8080-exec-2] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.770   [nio-8080-exec-2] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.770   [io-8080-exec-10] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.771   [io-8080-exec-10] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.771   [io-8080-exec-10] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.771   [io-8080-exec-10] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.772   [nio-8080-exec-5] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.772   [nio-8080-exec-5] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.772   [nio-8080-exec-5] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.772   [nio-8080-exec-5] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.772   [nio-8080-exec-4] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.772   [nio-8080-exec-1] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.773   [nio-8080-exec-4] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.773   [nio-8080-exec-4] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.773   [nio-8080-exec-1] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.772   [nio-8080-exec-7] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.773   [nio-8080-exec-7] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.773   [nio-8080-exec-7] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.773   [nio-8080-exec-4] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.773   [nio-8080-exec-1] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.773   [nio-8080-exec-7] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.773   [nio-8080-exec-1] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.773   [nio-8080-exec-3] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.773   [nio-8080-exec-3] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.773   [nio-8080-exec-3] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.773   [nio-8080-exec-3] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.774   [nio-8080-exec-6] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.774   [nio-8080-exec-6] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.774   [nio-8080-exec-6] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.774   [nio-8080-exec-6] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.775   [nio-8080-exec-4] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.775   [nio-8080-exec-4] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.775   [nio-8080-exec-4] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.775   [nio-8080-exec-4] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.776   [nio-8080-exec-9] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.776   [nio-8080-exec-9] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.776   [nio-8080-exec-9] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.776   [nio-8080-exec-9] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.776   [io-8080-exec-10] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.776   [nio-8080-exec-2] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.776   [io-8080-exec-10] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.776   [io-8080-exec-10] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.776   [io-8080-exec-10] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.776   [nio-8080-exec-2] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.776   [nio-8080-exec-6] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.776   [nio-8080-exec-2] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.776   [nio-8080-exec-6] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.777   [nio-8080-exec-2] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.777   [nio-8080-exec-6] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.777   [nio-8080-exec-6] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.777   [nio-8080-exec-1] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.777   [nio-8080-exec-1] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.777   [nio-8080-exec-1] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.777   [nio-8080-exec-1] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.777   [nio-8080-exec-7] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.778   [nio-8080-exec-7] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.778   [nio-8080-exec-7] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.778   [nio-8080-exec-7] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.778   [nio-8080-exec-2] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.778   [nio-8080-exec-3] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.778   [nio-8080-exec-2] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.779   [nio-8080-exec-2] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.779   [nio-8080-exec-2] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.779   [nio-8080-exec-3] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.779   [nio-8080-exec-3] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.779   [nio-8080-exec-3] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.779   [nio-8080-exec-4] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.779   [nio-8080-exec-5] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.779   [nio-8080-exec-4] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.780   [nio-8080-exec-4] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.780   [nio-8080-exec-4] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.780   [io-8080-exec-10] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.780   [nio-8080-exec-5] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.780   [nio-8080-exec-5] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.780   [nio-8080-exec-5] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.780   [nio-8080-exec-9] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.780   [io-8080-exec-10] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.858   [io-8080-exec-10] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.858   [io-8080-exec-10] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.859   [nio-8080-exec-6] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.860   [nio-8080-exec-4] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.860   [nio-8080-exec-9] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.860   [nio-8080-exec-6] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.860   [nio-8080-exec-6] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.860   [nio-8080-exec-6] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.860   [nio-8080-exec-9] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.860   [nio-8080-exec-9] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.861   [nio-8080-exec-4] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.861   [nio-8080-exec-4] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.861   [nio-8080-exec-4] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.862   [nio-8080-exec-8] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.862   [nio-8080-exec-7] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.862   [nio-8080-exec-8] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.862   [nio-8080-exec-8] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.862   [nio-8080-exec-7] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.862   [nio-8080-exec-7] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.862   [nio-8080-exec-7] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.862   [nio-8080-exec-8] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.864   [nio-8080-exec-4] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.864   [nio-8080-exec-4] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.864   [nio-8080-exec-4] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.864   [nio-8080-exec-4] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.864   [nio-8080-exec-8] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.864   [nio-8080-exec-1] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.864   [nio-8080-exec-8] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.864   [nio-8080-exec-8] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.864   [nio-8080-exec-8] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.864   [nio-8080-exec-1] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.864   [nio-8080-exec-5] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.864   [nio-8080-exec-1] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.864   [nio-8080-exec-1] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.864   [nio-8080-exec-5] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.864   [nio-8080-exec-5] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.864   [nio-8080-exec-5] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.865   [nio-8080-exec-3] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.865   [nio-8080-exec-3] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.865   [nio-8080-exec-3] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.864   [nio-8080-exec-9] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.866   [nio-8080-exec-3] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.866   [nio-8080-exec-9] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.866   [nio-8080-exec-9] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.866   [nio-8080-exec-9] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.868   [nio-8080-exec-2] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.868   [nio-8080-exec-2] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.868   [nio-8080-exec-2] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.868   [nio-8080-exec-2] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.868   [nio-8080-exec-6] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.868   [nio-8080-exec-6] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.868   [nio-8080-exec-7] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.869   [nio-8080-exec-7] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.869   [nio-8080-exec-7] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.869   [nio-8080-exec-7] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.869   [io-8080-exec-10] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.869   [io-8080-exec-10] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.869   [io-8080-exec-10] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.869   [io-8080-exec-10] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.869   [nio-8080-exec-6] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.869   [nio-8080-exec-4] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.869   [nio-8080-exec-4] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.869   [nio-8080-exec-4] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.869   [nio-8080-exec-4] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.868   [nio-8080-exec-8] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.869   [nio-8080-exec-6] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.869   [nio-8080-exec-8] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.870   [nio-8080-exec-8] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.870   [nio-8080-exec-8] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.870   [io-8080-exec-10] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.870   [io-8080-exec-10] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.870   [io-8080-exec-10] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.870   [io-8080-exec-10] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.871   [nio-8080-exec-5] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.871   [nio-8080-exec-5] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.871   [nio-8080-exec-5] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.871   [nio-8080-exec-5] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.871   [nio-8080-exec-9] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.871   [nio-8080-exec-9] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.871   [nio-8080-exec-9] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.871   [nio-8080-exec-9] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.871   [io-8080-exec-10] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.872   [io-8080-exec-10] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.872   [io-8080-exec-10] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.872   [io-8080-exec-10] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.872   [nio-8080-exec-3] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.872   [nio-8080-exec-5] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.872   [nio-8080-exec-3] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.872   [nio-8080-exec-5] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.872   [nio-8080-exec-3] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.872   [nio-8080-exec-5] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.872   [nio-8080-exec-5] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.872   [nio-8080-exec-3] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.873   [nio-8080-exec-2] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.873   [nio-8080-exec-2] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.873   [nio-8080-exec-2] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.873   [nio-8080-exec-9] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.873   [nio-8080-exec-2] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.873   [nio-8080-exec-9] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.873   [nio-8080-exec-9] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.873   [nio-8080-exec-9] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.873   [nio-8080-exec-7] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.873   [nio-8080-exec-7] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.873   [nio-8080-exec-7] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.873   [nio-8080-exec-7] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.873   [nio-8080-exec-6] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.874   [nio-8080-exec-6] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.874   [nio-8080-exec-6] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.874   [nio-8080-exec-6] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.874   [io-8080-exec-10] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.874   [io-8080-exec-10] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.874   [io-8080-exec-10] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.875   [nio-8080-exec-4] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.875   [io-8080-exec-10] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.875   [nio-8080-exec-3] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.875   [nio-8080-exec-8] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.875   [nio-8080-exec-4] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.875   [nio-8080-exec-4] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.876   [nio-8080-exec-4] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.876   [nio-8080-exec-1] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.876   [nio-8080-exec-9] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.876   [nio-8080-exec-3] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.876   [nio-8080-exec-3] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.876   [nio-8080-exec-3] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.876   [nio-8080-exec-8] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.876   [nio-8080-exec-8] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.877   [nio-8080-exec-8] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.877   [nio-8080-exec-1] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.877   [nio-8080-exec-1] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.877   [nio-8080-exec-1] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.877   [nio-8080-exec-9] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.877   [nio-8080-exec-9] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.877   [nio-8080-exec-9] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.878   [nio-8080-exec-2] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.878   [nio-8080-exec-2] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.878   [nio-8080-exec-2] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.878   [nio-8080-exec-2] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.878   [nio-8080-exec-7] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.878   [nio-8080-exec-7] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.878   [nio-8080-exec-7] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.878   [nio-8080-exec-5] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.878   [nio-8080-exec-5] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.878   [nio-8080-exec-7] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.878   [nio-8080-exec-5] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.879   [nio-8080-exec-5] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.880   [nio-8080-exec-4] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.880   [nio-8080-exec-4] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.880   [nio-8080-exec-4] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.880   [nio-8080-exec-4] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.880   [nio-8080-exec-6] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.880   [nio-8080-exec-6] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.880   [nio-8080-exec-6] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.880   [nio-8080-exec-6] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.880   [io-8080-exec-10] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.881   [io-8080-exec-10] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.881   [io-8080-exec-10] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.881   [io-8080-exec-10] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.881   [nio-8080-exec-7] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.881   [nio-8080-exec-7] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.881   [nio-8080-exec-7] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.881   [nio-8080-exec-3] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.881   [nio-8080-exec-3] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.881   [nio-8080-exec-3] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.881   [nio-8080-exec-3] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.881   [nio-8080-exec-9] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.881   [nio-8080-exec-9] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.881   [nio-8080-exec-9] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.881   [nio-8080-exec-9] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.881   [nio-8080-exec-7] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.883   [nio-8080-exec-3] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.883   [nio-8080-exec-3] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.883   [nio-8080-exec-3] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.883   [nio-8080-exec-9] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.883   [nio-8080-exec-3] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.883   [nio-8080-exec-9] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.883   [nio-8080-exec-9] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.883   [nio-8080-exec-9] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.883   [nio-8080-exec-5] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.883   [nio-8080-exec-5] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.883   [nio-8080-exec-5] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.883   [nio-8080-exec-5] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.883   [nio-8080-exec-2] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.883   [nio-8080-exec-2] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.883   [nio-8080-exec-2] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.883   [nio-8080-exec-2] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.883   [nio-8080-exec-7] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.884   [nio-8080-exec-7] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.884   [nio-8080-exec-7] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.884   [nio-8080-exec-7] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.884   [nio-8080-exec-8] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.884   [nio-8080-exec-8] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.884   [nio-8080-exec-8] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.884   [nio-8080-exec-8] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.886   [nio-8080-exec-8] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.886   [nio-8080-exec-4] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.886   [nio-8080-exec-8] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.886   [nio-8080-exec-1] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-A, accountToId=ACC-B, amount=5)
+47.886   [nio-8080-exec-8] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.886   [nio-8080-exec-8] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.886   [nio-8080-exec-4] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.886   [nio-8080-exec-4] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.886   [nio-8080-exec-4] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.886   [nio-8080-exec-1] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-A to account ACC-B
+47.886   [nio-8080-exec-1] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer debited: 5 sent to account ACC-B.
+47.886   [nio-8080-exec-1] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer credited: 5 received from account ACC-A.
+47.886   [nio-8080-exec-3] c.dws.challenge.web.AccountsController   : Processing transfer request: TransferRequest(accountFromId=ACC-B, accountToId=ACC-A, amount=5)
+47.887   [nio-8080-exec-3] c.dws.challenge.service.AccountsService  : Completed transfer of 5 from account ACC-B to account ACC-A
+47.887   [nio-8080-exec-3] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-B: Transfer debited: 5 sent to account ACC-A.
+47.887   [nio-8080-exec-3] c.d.c.service.EmailNotificationService   : Sending notification to owner of ACC-A: Transfer credited: 5 received from account ACC-B.
+47.889   [nio-8080-exec-5] c.dws.challenge.web.AccountsController   : Fetching details for account: ACC-A
+47.892   [nio-8080-exec-6] c.dws.challenge.web.AccountsController   : Fetching details for account: ACC-B
+============================================Deadlock test ended============================
