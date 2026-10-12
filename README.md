@@ -109,26 +109,7 @@ Observability is integrated via **Spring Boot Actuator** to provide runtime heal
 
 ---
 
-## 5. Verification Matrix & Test Coverage
-
-The project includes unit, integration, and high-contention concurrency test suites:
-
-| Category | Requirement / Scenario | Test Method | Status |
-| :--- | :--- | :--- | :--- |
-| **API Contract** | Transfer payload validation (`accountFrom`, `accountTo`, `amount`) | `AccountsControllerTest#executeTransfer_Success` | **PASSED** |
-| **Validation** | Positive amount enforcement ($> 0$) | `AccountsControllerTest#executeTransfer_InsufficientFunds` | **PASSED** |
-| **Validation** | Zero overdraft enforcement | `AccountsServiceTest#transferFunds_InsufficientBalance` | **PASSED** |
-| **Notifications** | Dual notification delivery to sender & receiver | `AccountsServiceTest#transferFunds_Success` | **PASSED** |
-| **Testing Standards** | Mocked `NotificationService` boundary | Handled via `@MockBean` / `@MockitoBean` | **PASSED** |
-| **Concurrency** | Atomic balance updates & race condition safety | `AccountsServiceTest#transferFunds_ConcurrentTransfers_NoDeadlock` | **PASSED** |
-| **Concurrency** | Bi-directional deadlock prevention ($A \leftrightarrow B$) | `AccountsServiceTest#transferFunds_ConcurrentTransfers_NoDeadlock` | **PASSED** |
-| **Edge Cases** | Self-transfer rejection ($A \to A$) | `AccountsServiceTest#transferFunds_SameAccount` | **PASSED** |
-| **Edge Cases** | Non-existent account detection | `AccountsServiceTest#transferFunds_NonExistentAccount` | **PASSED** |
-| **Resilience** | Notification failures do not corrupt balance | `AccountsServiceTest` validation | **PASSED** |
-
----
-
-## 6. Enterprise Production Readiness & Future Scope
+## 5. Enterprise Production Readiness & Future Scope
 
 While the reference implementation fulfills all challenge requirements using an in-memory repository within a single JVM, transitioning this service to an enterprise-grade banking environment requires the following architectural enhancements:
 
@@ -161,7 +142,7 @@ While the reference implementation fulfills all challenge requirements using an 
 
 ---
 
-## 7. Build and Run Instructions
+## 6. Build and Run Instructions
 
 ### Prerequisites
 - Java 17
