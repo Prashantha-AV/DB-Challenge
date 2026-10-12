@@ -1,6 +1,6 @@
 # Bank Transfer Service — Engineering Architecture & Implementation
 
-A robust, thread-safe financial transfer REST API built with **Java 17** and **Spring Boot 3.4.0**, designed to process concurrent account balance transfers with absolute transactional integrity, zero deadlocks, and strict domain validation.
+A robust, thread-safe financial transfer REST API built with **Java 17** and **Spring Boot 4.0.8**, designed to process concurrent account balance transfers with absolute transactional integrity, zero deadlocks, and strict domain validation.
 
 ---
 
